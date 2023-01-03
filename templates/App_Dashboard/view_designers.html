@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/static/css/posts.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Montserrat:300,400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/style3.css" />
+    <link rel="stylesheet" href="/static/css/style5.css" />
+
+    {% include 'footer_scripts.html' %}
+
+    <title>Havenly</title>
+  </head>
+  <body>
+    <style>
+        .bg-scollme {
+            background: rgba(0, 0, 0, 0.5);
+          }
+    </style>
+    <!-- NAV-BAR -->
+    {% include 'navbar.html' %}
+    <!-- END -->
+
+    <section style="margin-top: 150px; margin-bottom: 150px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card" style="width: 18rem;">
+                        <img src="/media/{{ designer.profile_pic }}" class="card-img-top" alt="Designer Pic">
+                        <div class="card-body">
+                          <h5 class="card-title">{% if not designer.full_name %}
+                            {{ designer.user.username }}
+                            {% else %}
+                            {{ designer.full_name }}
+                            {% endif %}</h5>
+                          <p class="card-text">Username: {{ designer.user.username }}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Email: {{ designer.user.email }}</li>
+                          <li class="list-group-item">Contact: {{ designer.contact }}</li>
+                          <li class="list-group-item">{{ posts.count }} Posts</li>
+                        </ul>
+                        <div class="card-body">
+                            <form
+                            id="contact-form"
+                            method="post"
+                            enctype="multipart/form-data"
+                            action="{% url 'App_Dashboard:desginerMessage' %}"
+                          >
+                            {% csrf_token %}
+                            <div class="row mt-40">
+                              <div class="form-group col-md-12">
+                                <input type="hidden" name="designer_id" value="{{ designer.user.id }}" />
+                                <input
+                                  type="text"
+                                  name="message"
+                                  class="form-control"
+                                  placeholder="Message Me"
+                                  required="required"
+                                />
+                              </div>
+                              <div class="col-md-12">
+                                <div class="actions">
+                                  <button
+                                    type="submit"
+                                    name="submit"
+                                    class="btn btn-lg btn-danger btn-center h-align col-12"
+                                    title="Write Your Message!"
+                                  /><i class="fa fa-paper-plane" aria-hidden="true"> Message</i></button>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-md-12" data-aos="fade-up">
+                          <div class="section-title text-center wow zoomIn mt-40">
+                            <h2>Posts</h2>
+                            <span></span>
+                            <p>Posts by {% if not designer.full_name %}
+                                {{ designer.user.username }}
+                                {% else %}
+                                {{ designer.full_name }}
+                                {% endif %}</p>
+                          </div>
+                        </div>
+                        <!-- END COL -->
+                      </div>
+                      <!-- END ROW -->
+                      <div class="row">
+                          {% for post in posts %}
+                        
+                        <div class="col-6" data-aos="fade-up">
+                          <div class="single_blog">
+                            <div class="blog_image">
+                              <img
+                                class="blog-photo"
+                                alt="Blog Photo"
+                                src="/media/{{ post.image }}"
+                                width="600px"
+                              />
+                              <span class="post_date">{{ post.upload_date}}</span>
+                            </div>
+                            <div class="blog-text">
+                              <h4>
+                                <a href="{% url 'App_Dashboard:view_post' post_id=post.id %}">
+                                  {% if not designer.full_name %} {{ post.author.username }}
+                                  {% else %} {{ post.full_name }} {% endif %}</a
+                                >
+                              </h4>
+                              <p>{{ post.description|truncatewords:10 }}</p>
+                              <div class="row justify-content-center">
+                                <a
+                                href="{% url 'App_Dashboard:view_post' post_id=post.id %}"
+                                class="btn btn-lg btn-danger btn-center h-align col-5"
+                                >View</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div> 
+                        <!--- END COL -->
+                        
+                        {% empty %}
+                            <div class="container"><h3 align="center">NO POST FOUND</h3></div>
+                        {% endfor %}
+                      </div>
+                      <!--- END ROW -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% comment %} footer {% endcomment %} {% include 'footer.html' %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    {% comment %} <script src="/static/js/navbar.js"></script> {% endcomment %}
+    <script src="https://kit.fontawesome.com/abffacff72.js" crossorigin="anonymous"></script>
+    <script src="/static/js/posts_scripts.js"></script>
+  </body>
+</html>

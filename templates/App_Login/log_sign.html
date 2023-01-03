@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/style2.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+    {% include 'footer_scripts.html' %}
+
+    <title>Sign In/Sign Up</title>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <!-- Login signup -->
+    <div class="sign-up-body">
+      <div class="container-log-sign-in" id="container">
+        <div class="form-container sign-up-container">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1 class="log-sign-h1">Create Account</h1>
+            <div class="social-container">
+              <a href="#" class="social log-sign-link"
+                ><ion-icon name="logo-facebook"></ion-icon
+              ></a>
+              <a href="#" class="social log-sign-link"
+                ><ion-icon name="logo-google"></ion-icon
+              ></a>
+              <a href="#" class="social log-sign-link"
+                ><ion-icon name="logo-linkedin"></ion-icon
+              ></a>
+            </div>
+            <span class="log-sign-span"
+              >or use your email for registration</span
+            >
+            <input
+              class="form__input log-sign-input"
+              type="text"
+              placeholder="John Doe"
+              required="required"
+              name="username"
+            />
+            <input
+              class="form__input log-sign-input"
+              type="email"
+              placeholder="you@example.com"
+              required="required"
+              name="email"
+            />
+            <input
+              class="form__input log-sign-input"
+              type="password"
+              placeholder="• • • • • • • •"
+              required="required"
+              minlength="8"
+              name="password1"
+            />
+            <input
+              class="form__input log-sign-input"
+              type="password"
+              placeholder="• • • • • • • •"
+              required="required"
+              minlength="8"
+              name="password2"
+            />
+            <select
+              class="forn_input log-sign-input log-sign-select"
+              required
+              name="type"
+              id="id_type"
+            >
+              <option value="">Select User Type:</option>
+              <option value="1">As a Customer</option>
+              <option value="2">As a Designer</option>
+            </select>
+            <button class="btn-sign-up" type="submit" name="signup">
+              Sign Up
+            </button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1 class="log-sign-h1">Sign in</h1>
+            <div class="social-container">
+              <a href="#" class="social log-sign-link"
+                ><ion-icon name="logo-facebook"></ion-icon
+              ></a>
+              <a href="#" class="social log-sign-link"
+                ><ion-icon name="logo-google"></ion-icon
+              ></a>
+              <a href="#" class="social log-sign-link"
+                ><ion-icon name="logo-linkedin"></ion-icon
+              ></a>
+            </div>
+            <span class="log-sign-span">or use your account</span>
+            <input
+              class="form__input log-sign-input"
+              type="text"
+              placeholder="John Doe"
+              required="required"
+              name="username"
+            />
+            <input
+              class="form__input log-sign-input"
+              type="password"
+              placeholder="• • • • • • • •"
+              required="required"
+              minlength="8"
+              name="password"
+            />
+            <a class="log-sign-link" href="#">Forgot your password?</a>
+            <button class="btn-sign-up" type="submit" name="signin">
+              Sign In
+            </button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1 class="log-sign-h1">Welcome Back!</h1>
+              <p>
+                To keep connected with us please login with your personal info
+              </p>
+              <button class="ghost btn-sign-up" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1 class="log-sign-h1">Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button class="ghost btn-sign-up" id="signUp">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} footer {% endcomment %}
+    {% include 'footer.html' %}
+    <!-- End -->
+  </body>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/static/js/index.js"></script>
+</html>

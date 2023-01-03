@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title_block %} {{ title }} {% endblock %}
+
+{% block css_block %}
+    .Designer {
+        width: 550px;
+        border: 1px solid #ccc;
+        padding: 25px;
+    }
+{% endblock %}
+
+{% block body_block %}
+<center>
+    <div class="Designer">
+        <h3>Add Designer Info</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ designer_info_form|crispy }}
+            <br>
+            <input type="submit" value="Add" name="submit" class="btn btn-primary" style="width: 100%">
+        </form>
+    </div>
+</center>
+{% endblock %}

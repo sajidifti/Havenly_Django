@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/static/css/posts.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Montserrat:300,400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/style3.css" />
+    <link rel="stylesheet" href="/static/css/style5.css" />
+
+    {% include 'footer_scripts.html' %}
+
+    <title>Havenly</title>
+  </head>
+  <body>
+    <style>
+        .bg-scollme {
+            background: rgba(0, 0, 0, 0.5);
+          }
+    </style>
+    <!-- NAV-BAR -->
+    {% include 'navbar.html' %}
+    <!-- END -->
+
+    {% comment %} Posts Start {% endcomment %}
+
+    <!-- START BLOG -->
+    <section id="blog" class="blog_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" data-aos="fade-up">
+            <div class="section-title text-center wow zoomIn mt-40">
+              <h2>Designers</h2>
+              <span></span>
+              <p>Our Designers</p>
+            </div>
+          </div>
+          <!-- END COL -->
+        </div>
+        <!-- END ROW -->
+
+        <div class="row">
+          {% for designer in users %}
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="single_blog">
+              <div class="blog_image">
+                <img
+                  class="blog-photo"
+                  alt="Blog Photo"
+                  src="/media/{{ designer.profile_pic }}"
+                  width="600px"
+                />
+              </div>
+              <div class="blog-text">
+                <h4>
+                    {% if not designer.full_name %}
+                    {{ designer.user.username }}
+                    {% else %}
+                    {{ designer.full_name }}
+                    {% endif %}
+                </h4>
+                <p class="card-text">{{ designer.user.email }}</p>
+                <p class="card-text">{{ designer.contact }}</p>
+                <div class="row justify-content-center">
+                  <a
+                  href="{% url 'App_Dashboard:view_designer' designer_id=designer.id %}"
+                  class="btn btn-lg btn-danger btn-center h-align col-7"
+                  >Go to Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--- END COL -->
+          {% empty %}
+          <div class="container"><h3 align="center">NO POST FOUND</h3></div>
+          {% endfor %}
+        </div>
+        <!--- END ROW -->
+      </div>
+      <!--- END CONTAINER -->
+    </section>
+    <!-- END BLOG -->
+
+    {% comment %} footer {% endcomment %} {% include 'footer.html' %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    {% comment %} <script src="/static/js/navbar.js"></script> {% endcomment %}
+    <script src="/static/js/posts_scripts.js"></script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/static/css/posts.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Montserrat:300,400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/style3.css" />
+    <link rel="stylesheet" href="/static/css/style5.css" />
+
+    {% include 'footer_scripts.html' %}
+
+    <title>Havenly</title>
+  </head>
+  <body>
+    <style>
+      .bg-scollme {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .btn-contact-bg {
+        background: #000 none repeat scroll 0 0 !important;
+        border: 1px solid #000 !important;
+      }
+    </style>
+    <!-- NAV-BAR -->
+    {% include 'navbar.html' %}
+    <!-- END -->
+
+    <div class="container" style="margin-top: 150px; margin-bottom: 150px;">
+        <table class="table table-hover">
+            <thead>
+            <tr><th colspan="8" class="text-center"><h3>Messages</h3></th></tr>
+            <tr>
+                <th>SL.</th>
+                <th>
+                    {% if request.user.user_profile.type == 2 %}
+                        Message From
+                    {% else %}
+                        Message To
+                    {% endif %}
+                </th>
+    
+                <th>Message</th>
+                <th>
+                    {% if request.user.user_profile.type == 2 %}
+                        Your Reply
+                    {% else %}
+                        Designer Reply
+                    {% endif %}
+                </th>
+            </tr>
+            </thead>
+            {% if request.user.user_profile.type == 2 %}
+            <tbody>
+            {% for msg in mymessages %}
+            <tr>
+                <td>{{ forloop.counter }} </td>
+    
+                <td>
+                    {% if msg.customer_user.user_profile.profile_pic %}
+                    <img src="/media/{{ msg.customer_user.user_profile.profile_pic }}" width="50px" height="50px" class="rounded-circle mr-1" alt="">{{ msg.customer_user.username }}</td>
+    
+                    {% else %}
+                    <img src="/media/default.jpg" width="50px" height="50px" class="rounded-circle mr-1" alt="">{{ msg.customer_user.username }}
+                    {% endif %}
+    
+                <td>{{ msg.message }}</td>
+                <td>{{ msg.reply_message }}<a href="{% url 'App_Dashboard:messageReply' message_id=msg.id %}">
+                    {% if msg.reply_message %}
+                    Edit your reply
+                    {% else %}
+                    Send your reply
+                    {% endif %}
+                </a></td>
+    
+            </tr>
+            {% empty %}
+            <tr><td colspan="9"><h3 align="center">NO RECORD FOUND</h3></td></tr>
+            {% endfor %}
+            </tbody>
+            {% else %}
+    
+            <tbody>
+            {% for msg in customerMessages %}
+            <tr>
+                <td>{{ forloop.counter }} </td>
+    
+                <td>
+                    {% for user in users %}
+                        {% if user.id == msg.designer_user %}
+                            {{ user.username }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+    
+                <td>{{ msg.message }}</td>
+                <td>{{ msg.reply_message }}
+                </td>
+    
+            </tr>
+            {% empty %}
+            <tr><td colspan="9"><h3 align="center">NO RECORD FOUND</h3></td></tr>
+            {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+    </div>
+
+    {% comment %} footer {% endcomment %} {% include 'footer.html' %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/abffacff72.js" crossorigin="anonymous"></script>
+    <script src="/static/js/posts_scripts.js"></script>
+  </body>
+</html>
