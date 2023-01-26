@@ -5,10 +5,6 @@ app_name = 'App_Dashboard'
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('country/', views.country, name="country"),
-    path('add_country/', views.country_form, name="add_country"),
-    path('edit_country/<int:country_id>/', views.edit_country, name="edit_country"),
-    path('delete_country/<int:country_id>/', views.delete_country, name="delete_country"),
 
     path('designer_info/', views.designer_info, name='designer_info'),
     path('add_designer/', views.add_designer, name='add_designer'),
@@ -31,5 +27,4 @@ urlpatterns = [
     path('myMessageList/', views.myMessageList, name='myMessageList'),
 
     path('contact_us/', views.contactUs, name='contact_us'),
-    path('about_us/', views.aboutUs, name='about_us')
 ]

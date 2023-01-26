@@ -237,10 +237,6 @@ def contactUs(request):
         return HttpResponseRedirect(reverse('App_Dashboard:home'))
 
 
-def aboutUs(request):
-    aboutus = AboutUs.objects.all()
-
-
 def react_post(request, post_id):
     react = React.objects.filter(post=post_id, user=request.user)
     if react:

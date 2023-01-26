@@ -2,12 +2,6 @@ from django import forms
 from App_Dashboard.models import Country, DesignerInfo, Post, Reply, DesignerMessage
 
 
-class CountryForm(forms.ModelForm):
-    class Meta:
-        model = Country
-        fields = '__all__'
-
-
 class DesignerInfoForm(forms.ModelForm):
     class Meta:
         model = DesignerInfo

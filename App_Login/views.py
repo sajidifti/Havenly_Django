@@ -20,28 +20,7 @@ from App_Login.models import UserProfile
 # Create your views here.
 
 def login(request):
-    if request.method == 'POST' and 'signin' in request.POST:
-        username1 = request.POST.get('username')
-        password1 = request.POST.get('password')
-        user = authenticate(username=username1, password=password1)
-        if user is not None:
-            lg(request, user)
-            return redirect('App_Dashboard:home')
-    if request.method == 'POST' and 'signup' in request.POST:
-        email = request.POST['email']
-        username = request.POST['username']
-        password = request.POST['password1']
-        user = User.objects.create_user(username=username, password=password, email=email)
-        user.save()
-        registered = True
-        data_dict = {
-            'user_id': user.id,
-            'type': request.POST['type'],
-        }
-        UserProfile.objects.create(**data_dict)
-        return HttpResponseRedirect(reverse('App_Login:log-sign'))
-
-    return render(request, 'App_Login/log_sign.html', context={'title': 'Sign In/Sign Up'})
+    return redirect('App_Login:log-sign')
 
 def log_sign(request):
     if request.method == 'POST' and 'signin' in request.POST:
