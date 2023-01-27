@@ -20,10 +20,14 @@ This project is kind of a Frankenstein of my other projects. Code is not clean a
 6. pillow
 
 Run: <br>
+```
 $ pip install django django-crispy-forms six pillow
+```
 
 <br>
 
 To run this application, go to the project folder and open a terminal window.
 Run: <br>
+```
 $ python manage.py runserver
+```
