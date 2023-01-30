@@ -9,7 +9,7 @@
 
 For security reasons, tawk.to script was removed and django secret was commented out.
 
-This project is kind of a Frankenstein of my other projects. Code is not clean as much as I would have liked.
+This project is kind of a Frankenstein of my other projects. The code is not clean as I would have liked.
 
 <i>Requirements:</i>
 1. Python
