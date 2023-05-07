@@ -1,5 +1,5 @@
 from django import forms
-from App_Dashboard.models import Country, DesignerInfo, Post, Reply, DesignerMessage
+from App_Dashboard.models import DesignerInfo, Post, Reply, DesignerMessage
 
 
 class DesignerInfoForm(forms.ModelForm):

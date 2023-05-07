@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-from App_Dashboard.models import Country
+# from App_Dashboard.models import Country
 
 
 class UserProfile(models.Model):

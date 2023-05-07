@@ -7,25 +7,23 @@ from django.urls import reverse
 
 from App_Dashboard import forms
 from App_Dashboard.forms import PostForm, ReplyFrom, DesignerMessageFrom
-from App_Dashboard.models import Country, DesignerInfo, Post, AboutUs, ContactUs, React, Reply, DesignerMessage
+from App_Dashboard.models import DesignerInfo, Post, ContactUs, React, Reply, DesignerMessage
 from App_Login.models import UserProfile
 
 
 # @login_required
 def home(request):
-    country_list = Country.objects.all()
+    # country_list = Country.objects.all()
     posts = Post.objects.all()
     customers_count = UserProfile.objects.filter(type=1)
     designers_count = UserProfile.objects.filter(type=2)
     designers = UserProfile.objects.filter(type=2)
-    aboutus = AboutUs.objects.all()
+    # aboutus = AboutUs.objects.all()
     diction = {
         'title': 'Dashboard',
-        'country_list': country_list,
         'customers_count': customers_count,
         'designers_count': designers_count,
         'designers': designers,
-        'aboutus': aboutus,
         'posts': posts
     }
     return render(request, "App_Dashboard/home.html", context=diction)
