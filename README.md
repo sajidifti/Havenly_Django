@@ -21,7 +21,7 @@ This project is kind of a Frankenstein of my other projects. The code is not cle
 
 Run: <br>
 ```
-$ pip install django django-crispy-forms six pillow
+pip install django django-crispy-forms six pillow crispy-bootstrap5
 ```
 
 <br>
@@ -29,5 +29,5 @@ $ pip install django django-crispy-forms six pillow
 To run this application, go to the project folder and open a terminal window.
 Run: <br>
 ```
-$ python manage.py runserver
+python manage.py runserver
 ```
