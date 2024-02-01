@@ -1,26 +1,27 @@
 # Havenly Interior Designer Hiring Platform
- This projectb was built using django.
  
+Havenly is a platform where users can find registered interior designers. Designers can post their designs. Users can message designers. Designers can reply and discuss. Tawk.to chat API is used to provide customer support.
  
- **Note: Havenly is registered trademark of Havenly Inc. We do not own the name Havenly. The name havenly was chosen as it is a recognizable name.**
+ **Note: Havenly is a registered trademark of Havenly Inc. We do not own the name Havenly. The name Havenly was chosen as it is a recognizable name.**
  
  If you have any inquary, please feel free to contact us.
 
+ This project was built using Django.
 
-For security reasons, tawk.to script was removed and django secret was commented out.
+For security reasons, Tawk.to script was removed and Django secret was commented out.
 
-This project is kind of a Frankenstein of my other projects. The code is not clean as I would have liked.
+This project is kind of a Frankenstein of my other projects. The code is not as clean as I would have liked.
 
 <i>Requirements:</i>
 1. Python
 2. Pip
-3. django
+3. Django
 4. django-crispy-forms
 5. six
 6. pillow
 
 Run: <br>
-```
+```bash
 pip install django django-crispy-forms six pillow crispy-bootstrap5
 ```
 
