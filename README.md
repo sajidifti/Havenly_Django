@@ -32,3 +32,61 @@ Run: <br>
 ```
 python manage.py runserver
 ```
+
+## Features
+
+- Users can post their designs
+- Users can message designers
+- Designers can reply and discuss
+- Tawk.to chat API is used to provide customer support
+- Users can login and logout
+- Users can contact admins
+- Desiners can add new designs and edit existing ones
+
+## Contact
+
+Contact me if you have any questions.
+
+Email: <info@sajidifti.com>
+
+## UI Screenshots
+
+### Home
+
+![Home](ui/home.jpeg)
+
+### Signin
+
+![Login](ui/signin.jpeg)
+
+### Signup
+
+![Signup](ui/signup.jpeg)
+
+### All Designs
+
+![All Designs](ui/allposts.jpeg)
+
+### View Design
+
+![View Design](ui/viewpost.jpeg)
+
+### View Designer
+
+![View Designer](ui/designerprofile.jpeg)
+
+### Profile
+
+![Profile](ui/profile.jpeg)
+
+### Add Design
+
+![Add Design](ui/adddesign.jpeg)
+
+### Edit Design
+
+![Edit Design](ui/editpost.jpeg)
+
+### Messages
+
+![Messages](ui/messages.jpeg)
